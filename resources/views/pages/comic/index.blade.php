@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('title-page', 'welcome')
+@section('library')
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css'
+        integrity='sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=='
+        crossorigin='anonymous' />
+@endsection
 @section('main-content')
     <h1>Index page comic</h1>
     <div>
@@ -29,9 +34,16 @@
                         <td>{{ $elem->series }}</td>
                         <td>{{ $elem->sale_date }}</td>
                         <td>{{ $elem->type }}</td>
+                        <td>
+                            <a href="{{ route('comics.show', $elem->id) }}">
+                                <i class="fa-solid fa-eye"></i></a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+        {{ $comics->links() }}
+
     </div>
 @endsection
